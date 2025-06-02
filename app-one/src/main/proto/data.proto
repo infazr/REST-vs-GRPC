@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.digiratina.grpc";
+option java_outer_classname = "DataProto";
+
+// Define the services
+service DataService {
+  rpc GenerateData (DataRequest) returns (DataResponse) {}
+}
+
+
+// Request/Response for DataService
+message DataRequest {
+  int32 attributes = 1;
+  int32 array_size = 2;
+}
+
+message DataObject {
+  map<string, string> attributes = 1;
+}
+
+message DataResponse {
+  repeated DataObject objects = 1;
+}

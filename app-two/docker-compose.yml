@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app-two:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digiratinatechnology/app-two:latest
+    ports:
+      - "5081:8081"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge

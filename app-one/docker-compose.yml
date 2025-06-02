@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  app-one:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digiratinatechnology/app-one:latest
+    ports:
+      - "5080:8080"
+      - "5090:9090"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    networks:
+      - app-network
+    restart: unless-stopped
+
+networks:
+  app-network:
+    driver: bridge
